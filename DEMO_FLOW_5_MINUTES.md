@@ -122,15 +122,22 @@
    - Show **device health chart** and **access control breakdown**
    - Explain: "Real-time overview of security posture"
 
-2. **Access Intelligence** (20 sec)
+2. **Access Intelligence** (30 sec)
    - Navigate to `/access-intelligence`
-   - Show **context signals**:
+   - **CLICK "Simulate Access Request"** button (this is the key demo!)
+   - Watch real-time verification:
+     - Identity Verification: ✓ Pass (95 score)
+     - Device Health Check: ✓ Pass (92 score)
+     - Behavioral Analysis: ✓ Pass (88 score)
+     - Context Signals: ⚠️ Public WiFi detected (65 score)
+   - Final Decision: "STEP-UP MFA REQUIRED" (avg score 85)
+   - Show decision time: **18ms**
+   - Explain: "This is Zero Trust in action - every pillar checked in milliseconds. Public WiFi triggered step-up MFA for extra security."
+   - Scroll down to show **context signals breakdown**:
      - Geolocation: New York (normal)
      - Network: Home WiFi (trusted)
      - Time: 2:30 PM Wednesday (business hours)
      - Device: MacBook Pro (healthy)
-   - Show **overall trust score** (90% = Access Granted)
-   - Explain: "Every access decision is based on Identity + Device + Behavior + Context"
 
 3. **Risk Intelligence** (20 sec)
    - Navigate to `/risk-intelligence`
@@ -260,7 +267,7 @@
 Priority order (what NOT to skip):
 1. **Must show (Landing Page)**: Problem → Solution → How It Works (Sarah's journey shows the complete story)
 2. **Must show (Live Demo)**: Employee portal + panic button (defines the unique value)
-3. **Must show (Live Demo)**: Access Intelligence (explains Zero Trust decision-making)
+3. **Must show (Live Demo)**: Access Intelligence **LIVE SIMULATOR** (proves Zero Trust works in real-time)
 4. **Should show (Live Demo)**: Risk Intelligence breakdown (proves threat detection works)
 5. **Can skip**: Security Drills (if running short, just mention "we also have security drills to test policies monthly")
 6. **Can skip**: Compliance details (mention ROI numbers instead)
@@ -273,7 +280,7 @@ Priority order (what NOT to skip):
   - How It Works: 35 sec
 - **Live Demo:** 3 minutes
   - Employee Experience: 1 min
-  - Admin Dashboard & Intelligence: 1.5 min
+  - Admin Dashboard & Intelligence: 1.5 min (Access Intelligence now 30 sec due to live simulator)
   - Security Drills & Compliance: 30 sec
 
 ### Talking Points
