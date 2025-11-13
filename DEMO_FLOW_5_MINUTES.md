@@ -84,6 +84,7 @@
    - Click "Login as Grace Chen" (regular employee)
 
 2. **Employee Portal** (30 sec)
+   - Navigate to `/employee` (NEW employee-focused portal)
    - Show the **device health dashboard** (trust score 92%, firewall enabled, encrypted)
    - Show **panic button** (prominently displayed - emergency lockdown feature)
    - **CLICK PANIC BUTTON** to demonstrate:
@@ -116,14 +117,9 @@
 
 **[SWITCH to Admin Portal]**
 
-1. **Main Dashboard** (20 sec)
-   - Navigate to `/dashboard`
-   - Show **KPI cards**: Active Users, Devices, Alerts, Risk Level
-   - Show **device health chart** and **access control breakdown**
-   - Explain: "Real-time overview of security posture"
-
-2. **Access Intelligence** (30 sec)
-   - Navigate to `/access-intelligence`
+1. **Access Intelligence - Live Simulator** (50 sec)
+   - Navigate to `/access-intelligence` (skip old dashboard, go straight to the action!)
+   - Show context-aware access control dashboard first
    - **CLICK "Simulate Access Request"** button (this is the key demo!)
    - Watch real-time verification:
      - Identity Verification: ✓ Pass (95 score)
@@ -250,9 +246,9 @@
 
 ### Page Navigation Order
 1. Start: `/` (Landing page) OR `/login`
-2. Employee experience: `/employee` → `/requests` → `/enroll`
+2. Employee experience: `/employee` (PANIC BUTTON DEMO) → `/requests` → `/enroll`
 3. Switch to admin
-4. Admin dashboard: `/dashboard` → `/access-intelligence` → `/risk-intelligence` → `/analytics`
+4. Admin dashboard: `/access-intelligence` (LIVE SIMULATOR) → `/risk-intelligence` → `/analytics`
 5. Incident response: `/incident-response` → `/compliance-automation` → `/roi`
 
 ### Key Interactive Elements to Highlight
