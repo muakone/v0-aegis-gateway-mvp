@@ -30,9 +30,9 @@ export default function LoginPage() {
       // Redirect based on user role
       const user = useAuthStore.getState().user
       if (user?.role === "Admin") {
-        router.push("/dashboard")
+        router.push("/access-intelligence")  // NEW: Admin goes to live simulator
       } else {
-        router.push("/portal")
+        router.push("/employee")  // NEW: Users go to employee portal with panic button
       }
     } else {
       setError("Invalid credentials. Try ola@aegis.com or grace@aegis.com")
