@@ -60,16 +60,255 @@ export default function LandingPage() {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-purple-500/50 hover:bg-purple-500/10 bg-transparent">
+            <button
+              onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-purple-500/50 hover:bg-purple-500/10 bg-transparent h-11 px-8"
+            >
               How It Works
-            </Button>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="relative py-20 px-4 border-t border-purple-500/10 scroll-mt-20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-balance">
+            How Aegis Works: Bank Employee Journey
+          </h2>
+          <p className="text-lg text-muted-foreground text-center mb-16 max-w-3xl mx-auto">
+            See how Aegis protects a regional bank with 500 employees—from setup to daily operations to emergency
+            response.
+          </p>
+
+          <div className="grid gap-12">
+            {/* Day 1: Setup */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center text-2xl font-bold">
+                1
+              </div>
+              <div className="ml-24">
+                <h3 className="text-2xl font-bold mb-4">Day 1: Quick Setup (10 Minutes)</h3>
+                <div className="p-6 rounded-lg border border-purple-500/20 bg-card space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-green-400 mt-2" />
+                    <div>
+                      <p className="font-semibold">Employee (Sarah, Bank Teller) receives email:</p>
+                      <p className="text-sm text-muted-foreground">"Install Aegis to access bank systems remotely"</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-green-400 mt-2" />
+                    <div>
+                      <p className="font-semibold">Downloads lightweight agent (50MB), installs in 10 min</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-yellow-400 mt-2" />
+                    <div>
+                      <p className="font-semibold">Agent scans device health:</p>
+                      <ul className="text-sm text-muted-foreground space-y-1 mt-2">
+                        <li>✓ Windows 11, up to date</li>
+                        <li>✓ Firewall enabled</li>
+                        <li>✓ Antivirus active</li>
+                        <li>⚠️ Disk encryption not enabled</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-green-400 mt-2" />
+                    <div>
+                      <p className="font-semibold">Aegis prompts: "Enable BitLocker" (guided walkthrough)</p>
+                      <p className="text-sm text-muted-foreground">Sarah enables encryption → "✓ You're protected!"</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Morning: Normal Access */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center text-2xl font-bold">
+                2
+              </div>
+              <div className="ml-24">
+                <h3 className="text-2xl font-bold mb-4">Morning: Seamless Access from Home</h3>
+                <div className="p-6 rounded-lg border border-green-500/30 bg-green-500/5 space-y-4">
+                  <p className="font-semibold">Sarah logs into Salesforce to view customer accounts</p>
+                  <div className="grid md:grid-cols-3 gap-4 text-sm">
+                    <div className="p-4 rounded bg-card border border-green-500/20">
+                      <p className="font-semibold text-green-400 mb-2">✓ Identity Verified</p>
+                      <p className="text-muted-foreground">Password + biometric</p>
+                    </div>
+                    <div className="p-4 rounded bg-card border border-green-500/20">
+                      <p className="font-semibold text-green-400 mb-2">✓ Device Healthy</p>
+                      <p className="text-muted-foreground">All checks pass</p>
+                    </div>
+                    <div className="p-4 rounded bg-card border border-green-500/20">
+                      <p className="font-semibold text-green-400 mb-2">✓ Context Normal</p>
+                      <p className="text-muted-foreground">Home network, 9 AM, NYC</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between p-4 rounded bg-green-500/10 border border-green-500/30">
+                    <div>
+                      <p className="font-semibold text-green-400">Risk Score: 12/100 (LOW)</p>
+                      <p className="text-sm text-muted-foreground">Decision time: 18ms</p>
+                    </div>
+                    <div className="text-2xl font-bold text-green-400">ACCESS GRANTED</div>
+                  </div>
+                  <p className="text-sm text-muted-foreground italic">Sarah works normally. Doesn't even notice Aegis running.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Afternoon: Step-up MFA */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center text-2xl font-bold">
+                3
+              </div>
+              <div className="ml-24">
+                <h3 className="text-2xl font-bold mb-4">Afternoon: Adaptive Security at Coffee Shop</h3>
+                <div className="p-6 rounded-lg border border-yellow-500/30 bg-yellow-500/5 space-y-4">
+                  <p className="font-semibold">Sarah tries to access sensitive customer financial records</p>
+                  <div className="grid md:grid-cols-3 gap-4 text-sm">
+                    <div className="p-4 rounded bg-card border border-green-500/20">
+                      <p className="font-semibold text-green-400 mb-2">✓ Identity Verified</p>
+                      <p className="text-muted-foreground">Still logged in</p>
+                    </div>
+                    <div className="p-4 rounded bg-card border border-green-500/20">
+                      <p className="font-semibold text-green-400 mb-2">✓ Device Healthy</p>
+                      <p className="text-muted-foreground">Same device</p>
+                    </div>
+                    <div className="p-4 rounded bg-card border border-yellow-500/30">
+                      <p className="font-semibold text-yellow-400 mb-2">⚠️ Context Changed</p>
+                      <p className="text-muted-foreground">Public WiFi, new location</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between p-4 rounded bg-yellow-500/10 border border-yellow-500/30">
+                    <div>
+                      <p className="font-semibold text-yellow-400">Risk Score: 58/100 (MEDIUM)</p>
+                      <p className="text-sm text-muted-foreground">Public network detected</p>
+                    </div>
+                    <div className="text-2xl font-bold text-yellow-400">STEP-UP MFA</div>
+                  </div>
+                  <div className="p-4 rounded bg-card border border-yellow-500/20">
+                    <p className="text-sm font-semibold mb-2">📱 Push notification sent:</p>
+                    <p className="text-sm text-muted-foreground">"We detected unusual network. Confirm it's you."</p>
+                    <p className="text-sm text-green-400 mt-2">✓ Sarah approves → Access granted (60-min limit on public WiFi)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Evening: Threat Blocked */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-2xl font-bold">
+                4
+              </div>
+              <div className="ml-24">
+                <h3 className="text-2xl font-bold mb-4">Evening: Credential Stuffing Attack Blocked</h3>
+                <div className="p-6 rounded-lg border border-red-500/30 bg-red-500/5 space-y-4">
+                  <p className="font-semibold">Hacker tries Sarah's leaked password from LinkedIn breach</p>
+                  <div className="grid md:grid-cols-3 gap-4 text-sm">
+                    <div className="p-4 rounded bg-card border border-yellow-500/30">
+                      <p className="font-semibold text-yellow-400 mb-2">⚠️ Identity Suspicious</p>
+                      <p className="text-muted-foreground">Correct password, wrong pattern</p>
+                    </div>
+                    <div className="p-4 rounded bg-card border border-red-500/30">
+                      <p className="font-semibold text-red-400 mb-2">❌ Device Unknown</p>
+                      <p className="text-muted-foreground">No agent installed</p>
+                    </div>
+                    <div className="p-4 rounded bg-card border border-red-500/30">
+                      <p className="font-semibold text-red-400 mb-2">❌ Impossible Travel</p>
+                      <p className="text-muted-foreground">NYC → Nigeria in 3 hours</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between p-4 rounded bg-red-500/10 border border-red-500/30">
+                    <div>
+                      <p className="font-semibold text-red-400">Risk Score: 98/100 (CRITICAL)</p>
+                      <p className="text-sm text-muted-foreground">Multiple red flags detected</p>
+                    </div>
+                    <div className="text-2xl font-bold text-red-400">ACCESS DENIED</div>
+                  </div>
+                  <div className="p-4 rounded bg-card border border-red-500/20 space-y-2">
+                    <p className="text-sm font-semibold">📱 Sarah receives text:</p>
+                    <p className="text-sm text-muted-foreground">"We blocked suspicious login from Nigeria. Was this you?"</p>
+                    <p className="text-sm text-green-400">✓ Sarah confirms not her</p>
+                    <p className="text-sm text-muted-foreground">→ Security team alerted → Password reset required</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Emergency: Panic Button */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center text-2xl font-bold">
+                <Flame className="w-8 h-8" />
+              </div>
+              <div className="ml-24">
+                <h3 className="text-2xl font-bold mb-4">Emergency: Laptop Stolen - Panic Button Activated</h3>
+                <div className="p-6 rounded-lg border border-red-500/30 bg-red-500/5 space-y-4">
+                  <p className="font-semibold">Sarah's laptop stolen from coffee shop</p>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                        1
+                      </div>
+                      <div>
+                        <p className="font-semibold">Sarah opens Aegis mobile app</p>
+                        <p className="text-sm text-muted-foreground">Clicks PANIC BUTTON → Confirms action</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                        2
+                      </div>
+                      <div>
+                        <p className="font-semibold text-red-400">Immediate Actions (< 5 seconds):</p>
+                        <ul className="text-sm text-muted-foreground space-y-1 mt-2">
+                          <li>• All Sarah's sessions terminated (Salesforce, email, VPN)</li>
+                          <li>• Stolen laptop isolated from network (can't access anything)</li>
+                          <li>• Location tracking enabled (if GPS available)</li>
+                          <li>• Security team alerted with incident details</li>
+                          <li>• Sarah's manager notified automatically</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                        3
+                      </div>
+                      <div>
+                        <p className="font-semibold text-green-400">Recovery:</p>
+                        <ul className="text-sm text-muted-foreground space-y-1 mt-2">
+                          <li>✓ Sarah reports theft to security</li>
+                          <li>✓ New device issued by IT</li>
+                          <li>✓ Re-enrolls with new device (10 min setup)</li>
+                          <li>✓ Old device permanently revoked</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="relative h-64 md:h-80 rounded-lg overflow-hidden border border-purple-500/30 glow-border">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5 flex items-center justify-center">
-              <div className="text-center">
-                <Shield className="w-16 h-16 mx-auto mb-4 text-purple-400 opacity-50" />
-                <p className="text-muted-foreground">Interactive Demo Environment</p>
+          {/* Summary */}
+          <div className="mt-16 p-8 rounded-lg border border-purple-500/30 bg-gradient-to-br from-purple-500/5 to-cyan-500/5">
+            <h3 className="text-2xl font-bold mb-4 text-center">The Result</h3>
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-3xl font-bold text-green-400 mb-2">0</div>
+                <p className="text-sm text-muted-foreground">Successful attacks</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-cyan-400 mb-2">< 20ms</div>
+                <p className="text-sm text-muted-foreground">Average decision time</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-purple-400 mb-2">$1.2M</div>
+                <p className="text-sm text-muted-foreground">Annual ROI for 500-person bank</p>
               </div>
             </div>
           </div>
