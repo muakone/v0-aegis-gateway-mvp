@@ -47,7 +47,7 @@
 - [ ] Identify natural pause points
 - [ ] Prepare answers to the 6 judge Q&A questions from PITCH_SPEECH_5_MINUTES.md
 - [ ] Plan hand gestures and movement (don't stand still, move naturally)
-- [ ] Know your talking points cold: $1.2M ROI, 15ms vs 150ms, $3T market, 70% remote workers
+- [ ] Know your talking points cold: $1.2M ROI, under 20ms vs 150ms+, $250B+ annual cybersecurity spending, 1B+ remote/hybrid workers+, $250B+ annual cybersecurity spending, $23B → $45B Zero Trust market, 1B+ remote/hybrid workers
 
 ---
 

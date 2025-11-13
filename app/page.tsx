@@ -32,7 +32,7 @@ export default function LandingPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4">
+      <section id="hero" className="relative pt-32 pb-20 px-4 scroll-mt-20">
         <div className="max-w-6xl mx-auto text-center">
           <div className="inline-block mb-6 px-4 py-2 rounded-full border border-purple-500/50 bg-purple-500/10">
             <span className="text-sm font-semibold text-accent">Zero Trust Security Platform</span>
@@ -77,7 +77,7 @@ export default function LandingPage() {
       </section>
 
       {/* Problem Section */}
-      <section className="relative py-20 px-4 border-t border-purple-500/10">
+      <section id="problem" className="relative py-20 px-4 border-t border-purple-500/10 scroll-mt-20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-balance">
             VPNs Were Built for the Office
@@ -107,8 +107,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Solution Section */}
-      <section className="relative py-20 px-4 border-t border-purple-500/10">
+      {/* Solution Section (Three Pillars) */}
+      <section id="solution" className="relative py-20 px-4 border-t border-purple-500/10 scroll-mt-20">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-balance">The Aegis Gateway Solution</h2>
 
@@ -177,7 +177,7 @@ export default function LandingPage() {
                 For Employees
               </h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>✓ 10x faster than VPN (15ms vs 150ms)</li>
+                <li>✓ 10x faster than VPN (sub-20ms vs 150ms+)</li>
                 <li>✓ Work securely from anywhere</li>
                 <li>✓ Emergency panic button for peace of mind</li>
               </ul>
@@ -198,7 +198,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="relative py-20 px-4 border-t border-purple-500/10">
+      <section id="features" className="relative py-20 px-4 border-t border-purple-500/10 scroll-mt-20">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-balance">Enterprise-Grade Features</h2>
 
@@ -226,7 +226,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="relative py-20 px-4 border-t border-purple-500/10">
+      <section id="pricing" className="relative py-20 px-4 border-t border-purple-500/10 scroll-mt-20">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-balance">Pricing Plans</h2>
 
@@ -291,7 +291,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <section className="relative py-16 px-4 border-t border-purple-500/10 bg-gradient-to-b from-transparent to-purple-500/5">
+      <section id="footer" className="relative py-16 px-4 border-t border-purple-500/10 bg-gradient-to-b from-transparent to-purple-500/5 scroll-mt-20">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-2">Aegis Gateway</h3>
