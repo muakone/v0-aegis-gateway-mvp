@@ -288,26 +288,87 @@ export default function LandingPage() {
       <section id="how-it-works" className="relative py-20 px-4 border-t border-purple-500/10 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-balance">
-            How Aegis Works: Bank Employee Journey
+            How Aegis Works: From Bank Setup to Daily Protection
           </h2>
           <p className="text-lg text-muted-foreground text-center mb-16 max-w-3xl mx-auto">
-            See how Aegis protects a regional bank with 500 employees—from setup to daily operations to emergency
-            response.
+            See how a regional bank with 500 employees deploys Aegis in one week—from IT setup to employee onboarding to
+            threat response.
           </p>
 
           <div className="grid gap-12">
-            {/* Day 1: Setup */}
+            {/* Week 1: Bank IT Setup */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-2xl font-bold">
+                0
+              </div>
+              <div className="ml-24">
+                <h3 className="text-2xl font-bold mb-4">Week 1: Bank IT Setup (Mike, Security Admin)</h3>
+                <div className="p-6 rounded-lg border border-blue-500/30 bg-blue-500/5 space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-blue-400 mt-2" />
+                    <div>
+                      <p className="font-semibold">Day 1: Integration (2 hours)</p>
+                      <p className="text-sm text-muted-foreground">
+                        Mike connects Aegis to bank's Azure AD/Okta for employee directory sync. Single sign-on (SSO)
+                        configured.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-blue-400 mt-2" />
+                    <div>
+                      <p className="font-semibold">Day 2-3: Policy Definition (4 hours)</p>
+                      <ul className="text-sm text-muted-foreground space-y-1 mt-2">
+                        <li>• Device requirements: OS updated, firewall on, disk encrypted, antivirus active</li>
+                        <li>• Network rules: Home WiFi = trusted, Public WiFi = step-up MFA required</li>
+                        <li>• Access policies: Financial data requires device trust score ≥80</li>
+                        <li>• Behavioral baselines: 30-day learning period for all 500 employees</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-blue-400 mt-2" />
+                    <div>
+                      <p className="font-semibold">Day 4: Pilot Testing (1 day)</p>
+                      <p className="text-sm text-muted-foreground">
+                        Mike tests with 10 IT team members. Confirms agent installs smoothly, policies work correctly.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-green-400 mt-2" />
+                    <div>
+                      <p className="font-semibold">Day 5: Rollout Launch</p>
+                      <p className="text-sm text-muted-foreground">
+                        Mike sends enrollment emails to all 500 employees: "Install Aegis to continue accessing bank
+                        systems remotely."
+                      </p>
+                    </div>
+                  </div>
+                  <div className="p-4 rounded bg-blue-500/10 border border-blue-500/30 mt-4">
+                    <p className="text-sm font-semibold text-blue-400">
+                      ✓ Total Setup Time: 1 week (mostly policy planning)
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Compare to: Traditional VPN setup = 4-6 weeks + $50K implementation costs
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Day 1: Employee Setup */}
             <div className="relative">
               <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center text-2xl font-bold">
                 1
               </div>
               <div className="ml-24">
-                <h3 className="text-2xl font-bold mb-4">Day 1: Quick Setup (10 Minutes)</h3>
+                <h3 className="text-2xl font-bold mb-4">Employee Day 1: Quick Setup (Sarah, Bank Teller)</h3>
                 <div className="p-6 rounded-lg border border-purple-500/20 bg-card space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 rounded-full bg-green-400 mt-2" />
                     <div>
-                      <p className="font-semibold">Employee (Sarah, Bank Teller) receives email:</p>
+                      <p className="font-semibold">Sarah receives email from IT:</p>
                       <p className="text-sm text-muted-foreground">"Install Aegis to access bank systems remotely"</p>
                     </div>
                   </div>
@@ -502,6 +563,47 @@ export default function LandingPage() {
                         </ul>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Security Team Monitoring */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-2xl font-bold">
+                <Activity className="w-8 h-8" />
+              </div>
+              <div className="ml-24">
+                <h3 className="text-2xl font-bold mb-4">Daily: Security Team Monitoring (Mike, Admin)</h3>
+                <div className="p-6 rounded-lg border border-cyan-500/30 bg-cyan-500/5 space-y-4">
+                  <p className="font-semibold">Mike monitors all 500 employees from central dashboard</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 rounded bg-card border border-cyan-500/20">
+                      <p className="font-semibold text-cyan-400 mb-2">📊 Real-Time Visibility</p>
+                      <ul className="text-sm text-muted-foreground space-y-1">
+                        <li>• 342 active sessions with risk scores</li>
+                        <li>• 28 employees on public WiFi (step-up MFA active)</li>
+                        <li>• 3 blocked attacks today (credential stuffing)</li>
+                        <li>• Average decision time: 18ms</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 rounded bg-card border border-cyan-500/20">
+                      <p className="font-semibold text-cyan-400 mb-2">🎯 Policy Management</p>
+                      <ul className="text-sm text-muted-foreground space-y-1">
+                        <li>• Reviews access patterns weekly</li>
+                        <li>• Adjusts policies based on threats</li>
+                        <li>• Runs monthly security drills</li>
+                        <li>• Generates compliance reports (SOC 2, PCI-DSS)</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="p-4 rounded bg-cyan-500/10 border border-cyan-500/30">
+                    <p className="text-sm font-semibold text-cyan-400">Monthly Security Drill Results:</p>
+                    <ul className="text-sm text-muted-foreground space-y-1 mt-2">
+                      <li>✓ Simulated phishing: 23 employees clicked → Access temporarily blocked → Re-trained</li>
+                      <li>✓ Impossible travel test: 100% detection rate</li>
+                      <li>✓ Device compliance: 97% of devices meet security standards</li>
+                    </ul>
                   </div>
                 </div>
               </div>

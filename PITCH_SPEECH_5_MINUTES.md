@@ -8,7 +8,7 @@
 
 **[Start strong. Look at judges. Speak clearly. Smile.]**
 
-"Good morning. My name is [YOUR NAME], and I want to start with a simple question: When was the last time you worked from home without worrying about security?
+"Good morning. My name is Basit Balogun, and I want to start with a simple question: When was the last time you worked from home without worrying about security?
 
 For most people, the answer is never. Because security and convenience don't typically go together.
 
