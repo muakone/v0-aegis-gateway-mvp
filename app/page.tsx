@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Shield, Zap, Eye, AlertCircle, Lock, Gauge, Flame } from "lucide-react"
+import { ArrowRight, Shield, Zap, Eye, AlertCircle, Lock, Gauge, Flame, Activity } from "lucide-react"
 import { useState, useEffect } from "react"
 
 export default function LandingPage() {
