@@ -1,6 +1,6 @@
 # Aegis Gateway: Technical Implementation Guide
 
-**Purpose:** This document explains how the demo features would be implemented in production. Use this to answer judge questions about technical feasibility.
+**Purpose:** This document explains how the demo features **would be built** in a production system. Our MVP uses mock data to demonstrate the concept—this guide shows the real implementation we'd deploy for customers. Use this to answer judge questions about technical feasibility.
 
 ---
 
@@ -34,16 +34,16 @@
 - Real-time trust score (92%)
 - Device compliance dashboard
 
-**How It Actually Works:**
+**How It Would Work in Production:**
 
 **Technology Stack:**
 - **Agent:** Electron app (cross-platform: Windows, macOS, Linux)
 - **Language:** Rust or Go (for performance and system-level access)
 - **Communication:** WebSocket connection to backend for real-time updates
 
-**Implementation Steps:**
+**Implementation Approach:**
 
-1. **Agent Installation (10 minutes):**
+1. **Agent Installation (would take ~10 minutes):**
    ```bash
    # Download lightweight agent (50MB)
    curl -O https://aegis.io/agent/install.sh
@@ -110,10 +110,10 @@
 **Judge Questions & Answers:**
 
 **Q: "How do you access system-level information without admin privileges?"**
-A: "Agent requires admin installation once. After that, it runs with elevated privileges (like antivirus software). On macOS, we use System Extensions API. On Windows, we use Windows Management Instrumentation (WMI)."
+A: "The agent would require admin installation once. After that, it would run with elevated privileges (like antivirus software). On macOS, we'd use System Extensions API. On Windows, we'd use Windows Management Instrumentation (WMI)."
 
 **Q: "What if the agent is disabled or uninstalled?"**
-A: "If the agent stops reporting for 5 minutes, the device's trust score drops to 0, and all access is revoked. Backend treats 'agent offline' as 'device compromised'."
+A: "If the agent stops reporting for 5 minutes, the device's trust score would drop to 0, and all access would be revoked. The backend would treat 'agent offline' as 'device compromised'."
 
 ---
 
@@ -124,7 +124,7 @@ A: "If the agent stops reporting for 5 minutes, the device's trust score drops t
 - 4-pillar verification (Identity, Device, Behavior, Context)
 - Decision in 18ms
 
-**How It Actually Works:**
+**How It Would Work in Production:**
 
 **Technology Stack:**
 - **Policy Engine:** Written in Go (for speed)
@@ -132,7 +132,7 @@ A: "If the agent stops reporting for 5 minutes, the device's trust score drops t
 - **ML Model:** ONNX Runtime (pre-compiled behavioral models)
 - **Database:** PostgreSQL (access logs), MongoDB (user profiles)
 
-**Implementation Steps:**
+**Implementation Approach:**
 
 1. **Access Request Flow:**
    ```go
@@ -202,10 +202,10 @@ A: "If the agent stops reporting for 5 minutes, the device's trust score drops t
 **Judge Questions & Answers:**
 
 **Q: "How do you make decisions in 18ms? That seems too fast."**
-A: "We pre-compute and cache everything we can. Device health is cached for 60 seconds. MFA tokens are validated locally with JWT. The only real-time computation is the ML model inference, which takes 8ms on CPU. We're not hitting databases on every request—that's the key."
+A: "We would pre-compute and cache everything we can. Device health would be cached for 60 seconds. MFA tokens would be validated locally with JWT. The only real-time computation would be the ML model inference, which takes 8ms on CPU. We wouldn't be hitting databases on every request—that's the key."
 
 **Q: "What happens if Redis goes down?"**
-A: "We have a fallback to PostgreSQL (slower, but works). Decision time increases to ~100ms. We also run Redis in cluster mode with automatic failover."
+A: "We'd have a fallback to PostgreSQL (slower, but works). Decision time would increase to ~100ms. We'd also run Redis in cluster mode with automatic failover."
 
 ---
 
@@ -216,7 +216,7 @@ A: "We have a fallback to PostgreSQL (slower, but works). Decision time increase
 - Flags abnormal access patterns
 - Insider threat detection
 
-**How It Actually Works:**
+**How It Would Work in Production:**
 
 **Technology Stack:**
 - **Model Training:** Python (scikit-learn, XGBoost)
@@ -224,7 +224,7 @@ A: "We have a fallback to PostgreSQL (slower, but works). Decision time increase
 - **Feature Store:** Redis + PostgreSQL
 - **Training Data:** Historical access logs (anonymized)
 
-**Implementation Steps:**
+**Implementation Approach:**
 
 1. **Feature Engineering:**
    ```python
@@ -312,10 +312,10 @@ A: "We have a fallback to PostgreSQL (slower, but works). Decision time increase
 **Judge Questions & Answers:**
 
 **Q: "How do you train the ML model without real data?"**
-A: "We start with synthetic data based on known attack patterns (impossible travel, credential stuffing, privilege escalation). Once customers deploy, we use their anonymized access logs (with consent) to retrain weekly. The model improves over time."
+A: "We'd start with synthetic data based on known attack patterns (impossible travel, credential stuffing, privilege escalation). Once customers deploy, we'd use their anonymized access logs (with consent) to retrain weekly. The model would improve over time."
 
 **Q: "What's your false positive rate?"**
-A: "After the 30-day learning period, we achieve <2% false positives. When we do block incorrectly, users can appeal via secondary MFA. We log all false positives and use them to retrain the model."
+A: "After the 30-day learning period, we'd achieve <2% false positives. When we do block incorrectly, users would be able to appeal via secondary MFA. We'd log all false positives and use them to retrain the model."
 
 ---
 
@@ -327,7 +327,7 @@ A: "After the 30-day learning period, we achieve <2% false positives. When we do
 - Step-by-step lockdown progress (6 steps)
 - All sessions terminated in <5 seconds
 
-**How It Actually Works:**
+**How It Would Work in Production:**
 
 **Technology Stack:**
 - **Mobile App:** React Native (iOS/Android)
@@ -335,7 +335,7 @@ A: "After the 30-day learning period, we achieve <2% false positives. When we do
 - **Session Store:** Redis (for fast session revocation)
 - **Notification Service:** Twilio (SMS), SendGrid (Email), FCM (Push)
 
-**Implementation Steps:**
+**Implementation Approach:**
 
 1. **Panic Button Press:**
    ```javascript
@@ -451,7 +451,7 @@ A: "After the 30-day learning period, we achieve <2% false positives. When we do
    })
    ```
 
-3. **Session Revocation (How It Works):**
+3. **Session Revocation (How It Would Work):**
    ```python
    # When user tries to access Salesforce AFTER panic button
    @app.middleware("http")
@@ -485,10 +485,10 @@ A: "After the 30-day learning period, we achieve <2% false positives. When we do
 **Judge Questions & Answers:**
 
 **Q: "How do you terminate sessions in under 5 seconds?"**
-A: "All active sessions are stored in Redis with TTL. When panic button is pressed, we delete all session keys for that user. Next time they try to access any resource, the middleware checks Redis, finds no session, and denies access. Redis operations take milliseconds."
+A: "All active sessions would be stored in Redis with TTL. When panic button is pressed, we'd delete all session keys for that user. Next time they try to access any resource, the middleware would check Redis, find no session, and deny access. Redis operations take milliseconds."
 
 **Q: "What if the user's device is already stolen and offline?"**
-A: "The panic button works from the mobile app too. Employee can press it from their phone, which triggers the same lockdown. The stolen laptop won't be able to access anything because all its session tokens are revoked server-side."
+A: "The panic button would work from the mobile app too. Employee could press it from their phone, which would trigger the same lockdown. The stolen laptop wouldn't be able to access anything because all its session tokens would be revoked server-side."
 
 ---
 
@@ -499,14 +499,14 @@ A: "The panic button works from the mobile app too. Employee can press it from t
 - System detects impossible travel (requires 8+ hour flight)
 - Risk score: 98/100 → Access denied
 
-**How It Actually Works:**
+**How It Would Work in Production:**
 
 **Technology Stack:**
 - **Geo-IP Database:** MaxMind GeoIP2 (free tier for demo, paid for production)
 - **Distance Calculation:** Haversine formula (great-circle distance)
 - **Travel Speed:** Physics-based validation
 
-**Implementation Steps:**
+**Implementation Approach:**
 
 1. **Geo-IP Lookup:**
    ```python
@@ -616,16 +616,16 @@ A: "The panic button works from the mobile app too. Employee can press it from t
 **Judge Questions & Answers:**
 
 **Q: "What if someone uses a VPN?"**
-A: "We detect VPN usage through IP reputation databases (we check if IP belongs to known VPN providers like NordVPN, ExpressVPN). If VPN is detected, we lower the trust score and require step-up MFA. Corporate VPNs are whitelisted."
+A: "We'd detect VPN usage through IP reputation databases (we'd check if IP belongs to known VPN providers like NordVPN, ExpressVPN). If VPN is detected, we'd lower the trust score and require step-up MFA. Corporate VPNs would be whitelisted."
 
 **Q: "What about false positives (legitimate travel)?"**
-A: "If someone is genuinely traveling, they'll receive an SMS: 'Suspicious login from London. Was this you?' They reply YES, and we update their location profile. Future logins from London won't trigger alerts. We learn travel patterns over time."
+A: "If someone is genuinely traveling, they'd receive an SMS: 'Suspicious login from London. Was this you?' They'd reply YES, and we'd update their location profile. Future logins from London wouldn't trigger alerts. We'd learn travel patterns over time."
 
 ---
 
 ## Scalability & Performance
 
-### How We Handle 50,000 Employees
+### How We Would Handle 50,000 Employees
 
 **Database Architecture:**
 - **PostgreSQL (Primary):** User profiles, policies, audit logs
@@ -645,16 +645,16 @@ A: "If someone is genuinely traveling, they'll receive an SMS: 'Suspicious login
 **Judge Questions & Answers:**
 
 **Q: "How does this scale to 50,000 employees?"**
-A: "All access decisions are made at the edge—there's no central bottleneck. The policy engine runs on 10+ nodes behind a load balancer. Device health data is cached in Redis. We can scale horizontally by adding more nodes. Each node can handle 1,000 access decisions per second."
+A: "All access decisions would be made at the edge—there'd be no central bottleneck. The policy engine would run on 10+ nodes behind a load balancer. Device health data would be cached in Redis. We could scale horizontally by adding more nodes. Each node can handle 1,000 access decisions per second."
 
 **Q: "What's your database strategy?"**
-A: "We use PostgreSQL for transactional data (users, policies), MongoDB for time-series data (device health history), and Redis for caching. We pre-compute everything we can. For example, device trust scores are calculated once per minute, not on every access request."
+A: "We'd use PostgreSQL for transactional data (users, policies), MongoDB for time-series data (device health history), and Redis for caching. We'd pre-compute everything we can. For example, device trust scores would be calculated once per minute, not on every access request."
 
 ---
 
 ## Security & Compliance
 
-### How We Protect Our Own System
+### How We Would Protect Our Own System
 
 **Encryption:**
 - **Data at rest:** AES-256 (database encryption)
@@ -674,10 +674,10 @@ A: "We use PostgreSQL for transactional data (users, policies), MongoDB for time
 **Judge Questions & Answers:**
 
 **Q: "How do you ensure your own system doesn't get hacked?"**
-A: "We apply Zero Trust to ourselves. Our engineers access production systems through the same Aegis Gateway policies. We run penetration tests quarterly. All code goes through security review. We use secrets management (Vault) and log everything to an immutable audit trail."
+A: "We'd apply Zero Trust to ourselves. Our engineers would access production systems through the same Aegis Gateway policies. We'd run penetration tests quarterly. All code would go through security review. We'd use secrets management (Vault) and log everything to an immutable audit trail."
 
 **Q: "What about GDPR compliance?"**
-A: "We're GDPR compliant. User data is encrypted at rest and in transit. We support data deletion requests (right to be forgotten). We don't share data with third parties. Device health data is anonymized for ML training. Employees can request their data export at any time."
+A: "We'd be GDPR compliant. User data would be encrypted at rest and in transit. We'd support data deletion requests (right to be forgotten). We wouldn't share data with third parties. Device health data would be anonymized for ML training. Employees could request their data export at any time."
 
 ---
 
@@ -702,10 +702,10 @@ A: "We're GDPR compliant. User data is encrypted at rest and in transit. We supp
 **Judge Questions & Answers:**
 
 **Q: "What are your infrastructure costs?"**
-A: "For 500 employees, we spend ~$1,300/month on AWS infrastructure. That's $2.56 per user. We charge $18/user, so our gross margin is 86%. As we scale, costs drop due to economies of scale. At 10,000 users, cost per user drops to ~$1.50."
+A: "For 500 employees, we'd spend ~$1,300/month on AWS infrastructure. That's $2.56 per user. We'd charge $18/user, so our gross margin would be 86%. As we scale, costs would drop due to economies of scale. At 10,000 users, cost per user would drop to ~$1.50."
 
 **Q: "Why is margin so high?"**
-A: "Zero Trust access control is a software-defined solution. We're not shipping hardware. Once the code is written, scaling is just adding compute nodes. Our biggest cost is sales and support, not infrastructure."
+A: "Zero Trust access control is a software-defined solution. We're not shipping hardware. Once the code is written, scaling is just adding compute nodes. Our biggest cost would be sales and support, not infrastructure."
 
 ---
 

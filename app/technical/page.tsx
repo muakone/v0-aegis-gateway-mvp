@@ -29,8 +29,8 @@ export default function TechnicalPage() {
         <div className="mb-12">
           <h2 className="text-4xl font-bold mb-4">Technical Implementation Guide</h2>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            This document explains how each demo feature would be implemented in production. Use this to answer
-            technical feasibility questions from judges.
+            This explains how each demo feature <strong>would be built</strong> in a production system. Our MVP uses mock data to demonstrate
+            the concept—this guide shows the real implementation we'd deploy for customers.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export default function TechnicalPage() {
               </div>
 
               <div>
-                <p className="font-semibold mb-2 text-sm text-purple-400">How It Works</p>
+                <p className="font-semibold mb-2 text-sm text-purple-400">How It Would Work</p>
                 <div className="p-4 rounded-lg bg-purple-500/5 border border-purple-500/20">
                   <p className="text-sm mb-2">Continuous health checks every 60 seconds:</p>
                   <pre className="text-xs overflow-x-auto text-muted-foreground">
@@ -114,15 +114,15 @@ export default function TechnicalPage() {
                   <div>
                     <p className="font-semibold">Q: How do you access system-level information?</p>
                     <p className="text-muted-foreground">
-                      A: Agent requires admin installation once. Runs with elevated privileges (like antivirus). On
+                      A: The agent would require admin installation once. It would run with elevated privileges (like antivirus). On
                       macOS: System Extensions API. On Windows: WMI.
                     </p>
                   </div>
                   <div>
                     <p className="font-semibold">Q: What if agent is disabled?</p>
                     <p className="text-muted-foreground">
-                      A: If agent stops reporting for 5 minutes, device trust score drops to 0, all access revoked.
-                      Backend treats "agent offline" as "device compromised."
+                      A: If agent stops reporting for 5 minutes, device trust score would drop to 0, all access would be revoked.
+                      Backend would treat "agent offline" as "device compromised."
                     </p>
                   </div>
                 </div>
@@ -182,15 +182,15 @@ export default function TechnicalPage() {
                   <div>
                     <p className="font-semibold">Q: 18ms seems too fast. How?</p>
                     <p className="text-muted-foreground">
-                      A: We pre-compute and cache everything. Device health cached for 60s. MFA tokens validated
-                      locally with JWT. Only real-time computation is ML inference (8ms on CPU). Not hitting databases
+                      A: We'd pre-compute and cache everything. Device health would be cached for 60s. MFA tokens would be validated
+                      locally with JWT. Only real-time computation would be ML inference (8ms on CPU). We wouldn't be hitting databases
                       on every request—that's the key.
                     </p>
                   </div>
                   <div>
                     <p className="font-semibold">Q: What if Redis goes down?</p>
                     <p className="text-muted-foreground">
-                      A: Fallback to PostgreSQL (slower, ~100ms). Redis runs in cluster mode with automatic failover.
+                      A: Fallback to PostgreSQL (slower, ~100ms). Redis would run in cluster mode with automatic failover.
                     </p>
                   </div>
                 </div>
@@ -257,14 +257,14 @@ if required_speed > 900:
                   <div>
                     <p className="font-semibold">Q: How do you train without real data?</p>
                     <p className="text-muted-foreground">
-                      A: Start with synthetic data based on known attack patterns. Once deployed, use anonymized customer
-                      logs (with consent) to retrain weekly. Model improves over time.
+                      A: We'd start with synthetic data based on known attack patterns. Once deployed, we'd use anonymized customer
+                      logs (with consent) to retrain weekly. Model would improve over time.
                     </p>
                   </div>
                   <div>
                     <p className="font-semibold">Q: What's your false positive rate?</p>
                     <p className="text-muted-foreground">
-                      A: After 30-day learning period, &lt;2% false positives. Users can appeal via secondary MFA. Log
+                      A: After 30-day learning period, &lt;2% false positives. Users would be able to appeal via secondary MFA. We'd log
                       all false positives for model retraining.
                     </p>
                   </div>
@@ -323,16 +323,16 @@ if required_speed > 900:
                   <div>
                     <p className="font-semibold">Q: How do you terminate sessions in &lt;5 seconds?</p>
                     <p className="text-muted-foreground">
-                      A: All sessions stored in Redis with TTL. Panic button deletes all session keys for that user.
-                      Next access attempt checks Redis, finds no session, denies access. Redis operations take
+                      A: All sessions would be stored in Redis with TTL. Panic button would delete all session keys for that user.
+                      Next access attempt would check Redis, find no session, deny access. Redis operations take
                       milliseconds.
                     </p>
                   </div>
                   <div>
                     <p className="font-semibold">Q: What if device is already stolen and offline?</p>
                     <p className="text-muted-foreground">
-                      A: Panic button works from mobile app. Employee presses from phone, triggers same lockdown. Stolen
-                      laptop can't access anything because session tokens revoked server-side.
+                      A: Panic button would work from mobile app. Employee would press from phone, trigger same lockdown. Stolen
+                      laptop wouldn't be able to access anything because session tokens would be revoked server-side.
                     </p>
                   </div>
                 </div>
@@ -386,9 +386,9 @@ if required_speed > 900:
                 <div>
                   <p className="font-semibold">Q: How does this scale to 50,000 employees?</p>
                   <p className="text-muted-foreground">
-                    A: All access decisions made at the edge—no central bottleneck. Policy engine runs on 10+ nodes
-                    behind load balancer. Device health cached in Redis. Scale horizontally by adding nodes. Each node
-                    handles 1,000 decisions/sec.
+                    A: All access decisions would be made at the edge—no central bottleneck. Policy engine would run on 10+ nodes
+                    behind load balancer. Device health would be cached in Redis. We'd scale horizontally by adding nodes. Each node
+                    can handle 1,000 decisions/sec.
                   </p>
                 </div>
               </div>
