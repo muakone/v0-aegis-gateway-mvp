@@ -2,7 +2,17 @@
 
 ## Introduction (30 seconds)
 
-**[Opening Slide]** "Welcome to Aegis Gateway - the Zero Trust Security Platform for the Borderless Office."
+**[Opening Slide - Landing Page]** "Welcome to Aegis Gateway - the Zero Trust Security Platform for the Borderless Office."
+
+**Quick Landing Page Tour (10 sec):**
+- Scroll to "How It Works" section (click button or scroll)
+- Show the 5-step employee journey visualization:
+  1. Day 1: 10-min setup
+  2. Morning: Seamless access from home (low risk)
+  3. Afternoon: Adaptive MFA on public WiFi (medium risk)
+  4. Evening: Credential stuffing blocked (high risk)
+  5. Emergency: Panic button activation
+- Say: "This shows exactly how Aegis protects a bank employee from setup to emergency"
 
 **Problem Statement:**
 - Traditional VPNs are broken for modern work
@@ -27,8 +37,19 @@
 2. **Employee Portal** (30 sec)
    - Show the **device health dashboard** (trust score 92%, firewall enabled, encrypted)
    - Show **panic button** (prominently displayed - emergency lockdown feature)
+   - **CLICK PANIC BUTTON** to demonstrate:
+     - Confirmation modal appears: "Activate Emergency Lockdown?"
+     - Shows what will happen: terminate sessions, isolate device, alert security, notify manager
+     - Click "Yes, Lock Down Now"
+     - Progress modal shows step-by-step lockdown:
+       - "Terminating all active sessions..."
+       - "Isolating device from network..."
+       - "Notifying security team..."
+       - "Alerting your manager..."
+       - "✓ Emergency lockdown complete"
+   - Explain: "Employees have immediate power to protect themselves. One click, full lockdown, visible feedback."
    - Show **access requests** (pending approval for Financial Reports Database)
-   - Explain: "Employees see their device status, request access when needed, can hit panic if compromised"
+   - Explain: "Just-in-time access - not permanent, time-limited, requires justification"
 
 3. **Access Request Workflow** (15 sec)
    - Navigate to `/requests`
@@ -79,11 +100,24 @@
 
 ---
 
-## Incident Response & Compliance (1 minute)
+## Security Drills & Threat Response (1 minute)
 
-**[Threat Simulation]**
+**[Security Drills - Why They Matter]**
 
-1. **Incident Response** (25 sec)
+1. **Security Drills (formerly Attack Simulation)** (25 sec)
+   - Navigate to `/attack-simulation`
+   - Show new header: "Security Drills & Posture Testing"
+   - Explain purpose: "Think of this as a fire drill for your security team. Run monthly drills to test if your policies actually block threats."
+   - Show drill types with clear purposes:
+     - **Impossible Travel Test**: Verify geo-location tracking blocks NYC → Kenya in 3 hours
+     - **Credential Stuffing Defense Test**: Validate rate limiting and account lockout
+     - **Compromised Device Test**: Ensure device health checks prevent access
+     - **Privilege Escalation Test**: Confirm behavioral anomaly detection works
+   - Run one drill (e.g., Impossible Travel)
+   - Show results: "Detected in 2 seconds, risk score 98/100, access denied, employee notified"
+   - Explain: "Security teams use these results to adjust policies and train staff"
+
+2. **Incident Response** (25 sec)
    - Navigate to `/incident-response`
    - Show active incident: "Impossible Travel Detected"
    - Show **automated playbook steps**:
@@ -93,7 +127,7 @@
      - ⚪ Step 4: Notify security team
    - Explain: "Playbooks automate threat response - no manual intervention needed"
 
-2. **Compliance Automation** (20 sec)
+3. **Compliance Automation** (10 sec)
    - Navigate to `/compliance-automation`
    - Show **compliance scores**:
      - SOC 2: 94% (Compliant) ✅
@@ -102,18 +136,6 @@
      - PCI DSS: 89% (Non-Compliant) ⚠️
    - Show automated checks (12 automated, 2 manual for SOC 2)
    - Explain: "Continuous compliance monitoring - audit trails auto-generated"
-
-3. **ROI Dashboard** (15 sec)
-   - Navigate to `/roi`
-   - Show **comparison table**: VPN vs Aegis Gateway
-     - Latency: 150ms → 15ms (10x faster!)
-     - Device verification: No → Yes
-     - Behavioral analytics: No → Yes
-     - Panic button: No → Yes
-   - Show **metrics**:
-     - 23% productivity gain
-     - $540K monthly security savings
-     - 40% audit time reduction
 
 ---
 

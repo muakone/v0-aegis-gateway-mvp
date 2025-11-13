@@ -25,35 +25,39 @@ export default function AttackSimulationPage() {
   const attacks = [
     {
       id: "sim-001",
-      name: "Impossible Travel Simulation",
-      description: "Simulate login from geographically impossible location",
+      name: "Impossible Travel Detection Test",
+      description: "Test if system blocks login from geographically impossible location within 3 hours",
+      purpose: "Verify geo-location tracking and impossible travel detection logic",
       riskLevel: "High",
       estimatedTime: "5-10 seconds",
-      expectedResult: "Instant geolocation verification, blocked after 2 factor auth challenge",
+      expectedResult: "Instant geolocation verification detects NYC → Kenya in 3 hours. Risk score: 98/100. Access denied. Employee notified.",
     },
     {
       id: "sim-002",
-      name: "Credential Stuffing Attack",
-      description: "Simulate multiple failed login attempts (brute force)",
+      name: "Credential Stuffing Defense Test",
+      description: "Test defense against multiple failed login attempts using leaked credentials",
+      purpose: "Validate rate limiting and account lockout policies",
       riskLevel: "High",
       estimatedTime: "3-5 seconds",
-      expectedResult: "Account lockout after 5 failed attempts, security alerts triggered",
+      expectedResult: "Account lockout after 5 failed attempts. Alerts sent to security team and employee. Password reset required.",
     },
     {
       id: "sim-003",
-      name: "Compromised Device Access",
-      description: "Simulate access from device with failed security checks",
+      name: "Compromised Device Detection Test",
+      description: "Test system response to access from device with failed security checks (no antivirus, outdated OS)",
+      purpose: "Ensure device health policies are enforced before granting access",
       riskLevel: "Critical",
       estimatedTime: "2-3 seconds",
-      expectedResult: "Access denied due to device posture failure, device isolation initiated",
+      expectedResult: "Access denied due to device posture failure. Employee notified to update OS and enable antivirus. Device isolated.",
     },
     {
       id: "sim-004",
-      name: "Insider Threat Escalation",
-      description: "Simulate privilege escalation attempt by normal user",
+      name: "Privilege Escalation Detection Test",
+      description: "Test detection of normal user attempting to access admin-only resources",
+      purpose: "Validate behavioral anomaly detection and RBAC enforcement",
       riskLevel: "Medium",
       estimatedTime: "3-7 seconds",
-      expectedResult: "Behavioral anomaly detected, additional MFA required, activity logged",
+      expectedResult: "Behavioral anomaly detected. Risk score elevated. Step-up MFA triggered. Activity logged for security review.",
     },
   ]
 
@@ -100,11 +104,36 @@ export default function AttackSimulationPage() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl font-bold flex items-center gap-3">
-            <AlertTriangle className="w-10 h-10 text-red-400" />
-            Attack Simulation Lab
+            <AlertTriangle className="w-10 h-10 text-cyan-400" />
+            Security Drills & Posture Testing
           </h1>
-          <p className="text-muted-foreground mt-2">Test Aegis Gateway security responses</p>
+          <p className="text-muted-foreground mt-2 max-w-3xl">
+            Test your security policies by simulating real-world attacks. Run monthly drills to verify Aegis detects
+            and blocks threats, then adjust policies based on results. Think of this as a fire drill for your security team.
+          </p>
         </div>
+
+        {/* Purpose Explanation */}
+        <Card className="mb-8 p-6 border-cyan-500/30 bg-cyan-500/5">
+          <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+            <CheckCircle className="w-5 h-5 text-cyan-400" />
+            Why Run Security Drills?
+          </h3>
+          <div className="grid md:grid-cols-3 gap-4 text-sm">
+            <div>
+              <p className="font-semibold text-foreground mb-1">✓ Test Your Policies</p>
+              <p className="text-muted-foreground">Verify your security rules actually block threats</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-1">✓ Find Gaps</p>
+              <p className="text-muted-foreground">Discover weak spots before real attackers do</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-1">✓ Train Your Team</p>
+              <p className="text-muted-foreground">Show security team what threats look like</p>
+            </div>
+          </div>
+        </Card>
 
         {/* Available Simulations */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -113,7 +142,7 @@ export default function AttackSimulationPage() {
               key={attack.id}
               className={`p-6 border transition-all ${
                 activeSimulation === attack.id
-                  ? "border-red-500/50 bg-red-500/10"
+                  ? "border-cyan-500/50 bg-cyan-500/10"
                   : "border-purple-500/30 hover:border-purple-500/50"
               }`}
             >
@@ -132,7 +161,8 @@ export default function AttackSimulationPage() {
                 </span>
               </div>
 
-              <p className="text-muted-foreground text-sm mb-4">{attack.description}</p>
+              <p className="text-muted-foreground text-sm mb-2">{attack.description}</p>
+              <p className="text-accent text-xs mb-4 italic">Purpose: {attack.purpose}</p>
 
               <div className="space-y-2 text-sm mb-6 bg-background/50 p-3 rounded border border-purple-500/20">
                 <p>

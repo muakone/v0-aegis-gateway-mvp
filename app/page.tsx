@@ -264,7 +264,7 @@ export default function LandingPage() {
                         2
                       </div>
                       <div>
-                        <p className="font-semibold text-red-400">Immediate Actions (< 5 seconds):</p>
+                        <p className="font-semibold text-red-400">Immediate Actions (&lt; 5 seconds):</p>
                         <ul className="text-sm text-muted-foreground space-y-1 mt-2">
                           <li>• All Sarah's sessions terminated (Salesforce, email, VPN)</li>
                           <li>• Stolen laptop isolated from network (can't access anything)</li>
@@ -303,7 +303,7 @@ export default function LandingPage() {
                 <p className="text-sm text-muted-foreground">Successful attacks</p>
               </div>
               <div>
-                <div className="text-3xl font-bold text-cyan-400 mb-2">< 20ms</div>
+                <div className="text-3xl font-bold text-cyan-400 mb-2">&lt; 20ms</div>
                 <p className="text-sm text-muted-foreground">Average decision time</p>
               </div>
               <div>

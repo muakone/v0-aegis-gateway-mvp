@@ -11,6 +11,8 @@ import Link from "next/link"
 export default function EmployeePortal() {
   const { user, logout } = useAuth()
   const [panicActive, setPanicActive] = useState(false)
+  const [showPanicConfirm, setShowPanicConfirm] = useState(false)
+  const [panicProgress, setPanicProgress] = useState<string[]>([])
 
   if (!user) redirect("/login")
   if (user.role === "Admin") redirect("/dashboard")
@@ -59,15 +61,109 @@ export default function EmployeePortal() {
   ]
 
   const handlePanicButton = () => {
+    setShowPanicConfirm(true)
+  }
+
+  const confirmPanic = () => {
+    setShowPanicConfirm(false)
     setPanicActive(true)
-    setTimeout(() => {
-      setPanicActive(false)
-      logout()
-    }, 2000)
+    
+    // Simulate step-by-step lockdown
+    const steps = [
+      "Terminating all active sessions...",
+      "Isolating device from network...",
+      "Notifying security team...",
+      "Alerting your manager...",
+      "Enabling location tracking...",
+      "✓ Emergency lockdown complete"
+    ]
+    
+    steps.forEach((step, index) => {
+      setTimeout(() => {
+        setPanicProgress(prev => [...prev, step])
+        if (index === steps.length - 1) {
+          setTimeout(() => {
+            logout()
+          }, 2000)
+        }
+      }, index * 800)
+    })
   }
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Panic Confirmation Modal */}
+      {showPanicConfirm && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-red-500/50 rounded-lg p-6 max-w-md w-full shadow-xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+                <AlertTriangle className="w-6 h-6 text-red-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-foreground">Activate Emergency Lockdown?</h3>
+                <p className="text-sm text-muted-foreground">This action cannot be undone</p>
+              </div>
+            </div>
+            <div className="mb-6 p-4 rounded bg-red-500/10 border border-red-500/30">
+              <p className="text-sm text-foreground mb-2 font-semibold">This will immediately:</p>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Terminate all your active sessions</li>
+                <li>• Isolate your device from the network</li>
+                <li>• Alert the security team</li>
+                <li>• Notify your manager</li>
+                <li>• Enable device location tracking</li>
+              </ul>
+            </div>
+            <div className="flex gap-3">
+              <Button
+                onClick={() => setShowPanicConfirm(false)}
+                variant="outline"
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={confirmPanic}
+                className="flex-1 bg-red-500 hover:bg-red-600 text-white"
+              >
+                Yes, Lock Down Now
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Panic Progress Modal */}
+      {panicActive && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-red-500/50 rounded-lg p-8 max-w-md w-full shadow-xl">
+            <div className="flex flex-col items-center mb-6">
+              <div className="w-16 h-16 rounded-full bg-red-500 flex items-center justify-center mb-4 animate-pulse">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-red-400">Emergency Lockdown Active</h3>
+            </div>
+            <div className="space-y-3">
+              {panicProgress.map((step, index) => (
+                <div key={index} className="flex items-start gap-3 text-sm">
+                  <div className="mt-1">
+                    {step.startsWith('✓') ? (
+                      <CheckCircle className="w-4 h-4 text-green-400" />
+                    ) : (
+                      <div className="w-4 h-4 border-2 border-red-400 border-t-transparent rounded-full animate-spin" />
+                    )}
+                  </div>
+                  <span className={step.startsWith('✓') ? 'text-green-400 font-semibold' : 'text-foreground'}>
+                    {step}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
