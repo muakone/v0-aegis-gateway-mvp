@@ -1,33 +1,82 @@
-# Aegis Gateway: 5-Minute Pitch Demo Flow
+# Aegis Gateway: 5-Minute Demo Flow (Landing Page + Live Demo)
 
-## Introduction (30 seconds)
-
-**[Opening Slide - Landing Page]** "Welcome to Aegis Gateway - the Zero Trust Security Platform for the Borderless Office."
-
-**Quick Landing Page Tour (10 sec):**
-- Scroll to "How It Works" section (click button or scroll)
-- Show the 5-step employee journey visualization:
-  1. Day 1: 10-min setup
-  2. Morning: Seamless access from home (low risk)
-  3. Afternoon: Adaptive MFA on public WiFi (medium risk)
-  4. Evening: Credential stuffing blocked (high risk)
-  5. Emergency: Panic button activation
-- Say: "This shows exactly how Aegis protects a bank employee from setup to emergency"
-
-**Problem Statement:**
-- Traditional VPNs are broken for modern work
-- Employees work from anywhere on personal devices
-- Old "trust the perimeter" model no longer works
-- Banks and enterprises need: secure remote access + employee productivity + compliance
-
-**What We're Solving:**
-"How do you protect sensitive data when employees access it from home networks on personal devices?"
+> **Format:** Combined pitch + demo - no separate pitch time. Navigate through landing page while speaking, then transition to live demo.
 
 ---
 
-## Employee Experience (1 minute)
+## Landing Page Walkthrough (2 minutes)
 
-**[LIVE DEMO - Employee Portal]**
+**[START: Landing Page - aegis-gateway.vercel.app]**
+
+### Hero Section (20 sec)
+- **Title:** "Aegis Gateway - Secure Remote Work Without VPN Friction"
+- **Key Message:** "Your employees work from anywhere. Your data needs protection everywhere."
+- **Say:** "Traditional VPNs were built for the office, not the borderless office. Aegis delivers continuous security verification—identity, device health, behavior—stopping threats in real-time while keeping work fast."
+- **Click "How It Works"** button (or scroll down)
+
+---
+
+### Problem Section (20 sec)
+**[Scroll to Problem Section]**
+- **Header:** "VPNs Were Built for the Office"
+- **Point out 3 key vulnerabilities:**
+  1. Compromised Endpoints (personal devices, weak security)
+  2. Stolen Credentials (phishing, social engineering)
+  3. Limited Visibility (no real-time anomaly detection)
+- **Say:** "Once you're inside a VPN, you're trusted. But what if the device is compromised? What if credentials are stolen? Traditional perimeter security can't answer that."
+
+---
+
+### Solution Section (20 sec)
+**[Scroll to Solution Section]**
+- **Header:** "Zero Trust: Verify Every Access, Every Time"
+- **Show the 4 verification layers:**
+  1. 🔐 Identity Verification (MFA, biometrics)
+  2. 💻 Device Health Check (OS, firewall, encryption, antivirus)
+  3. 👤 Behavioral Analysis (login patterns, impossible travel)
+  4. 🌍 Contextual Awareness (location, network, time)
+- **Say:** "Aegis makes an access decision in under 20 milliseconds. Identity + Device + Behavior + Context. Every single time. No assumptions."
+
+---
+
+### Features Section (15 sec)
+**[Scroll to Features Section]**
+- **Quickly highlight:**
+  - Continuous Trust Score (dynamic 0-100 score, changes in real-time)
+  - Just-in-Time Access (time-limited permissions)
+  - Automated Incident Response (playbooks trigger automatically)
+  - Device Health Enforcement (no access without compliance)
+- **Say:** "These aren't just features—they're automated guardrails that protect your most sensitive data."
+
+---
+
+### Pricing Section (10 sec)
+**[Scroll to Pricing Section]**
+- **Show 3 tiers:** Starter ($10/user), Professional ($18/user - most popular), Enterprise ($25+/user)
+- **Say:** "We're targeting 500-1000 person enterprises. At $18/user, that's $108K-$216K annual revenue per customer. Our target is $2M ARR in year 1."
+
+---
+
+### How It Works Section (35 sec)
+**[Scroll to How It Works Section]**
+- **Show Sarah the Bank Teller's journey:**
+  1. **Day 1:** 10-min setup, agent scans device, prompts to enable encryption
+  2. **Morning:** Seamless access from home (Risk: 12/100 - LOW - Access Granted in 18ms)
+  3. **Afternoon:** Public WiFi triggers step-up MFA (Risk: 58/100 - MEDIUM - Adaptive security)
+  4. **Evening:** Hacker uses leaked password (Risk: 98/100 - CRITICAL - Access Denied, Sarah notified)
+  5. **Emergency:** Laptop stolen, panic button clicked, all sessions terminated < 5 seconds
+- **Say:** "This is a real-world example. Sarah's laptop was compromised, but no data was lost. Aegis protected her and the bank—automatically."
+- **Show The Result:** 0 successful attacks, < 20ms decisions, $1.2M annual ROI
+
+**[Click "Try Live Demo" button]**
+
+---
+
+## Live Demo (3 minutes)
+
+**[TRANSITION: Click "Try Live Demo" → Login Page]**
+
+### Employee Experience (1 minute)
 
 1. **Login Screen** (10 sec)
    - Navigate to `/login`
@@ -209,20 +258,34 @@
 
 ### If Time is Running Short
 Priority order (what NOT to skip):
-1. **Must show**: Employee portal + panic button (defines the product)
-2. **Must show**: Dashboard overview (proves real-time monitoring)
-3. **Should show**: Access Intelligence (explains Zero Trust decision-making)
-4. **Should show**: ROI comparison (closes the sale)
-5. **Can skip**: Device onboarding (too detailed for pitch)
-6. **Can skip**: Advanced analytics charts (show one, skip details)
+1. **Must show (Landing Page)**: Problem → Solution → How It Works (Sarah's journey shows the complete story)
+2. **Must show (Live Demo)**: Employee portal + panic button (defines the unique value)
+3. **Must show (Live Demo)**: Access Intelligence (explains Zero Trust decision-making)
+4. **Should show (Live Demo)**: Risk Intelligence breakdown (proves threat detection works)
+5. **Can skip**: Security Drills (if running short, just mention "we also have security drills to test policies monthly")
+6. **Can skip**: Compliance details (mention ROI numbers instead)
+
+### Timing Breakdown
+- **Landing Page Walkthrough:** 2 minutes
+  - Hero + Problem: 40 sec
+  - Solution + Features: 35 sec
+  - Pricing: 10 sec
+  - How It Works: 35 sec
+- **Live Demo:** 3 minutes
+  - Employee Experience: 1 min
+  - Admin Dashboard & Intelligence: 1.5 min
+  - Security Drills & Compliance: 30 sec
 
 ### Talking Points
+
+**Opening (while on landing page):**
+- "Welcome to Aegis Gateway. I'm going to walk you through our landing page, then show you the live product—all in 5 minutes."
 
 **"Why Aegis beats VPN:"**
 - VPN gives access based on network location (broken assumption)
 - Aegis verifies: Who you are + What device you're on + Where you are + Your behavior
-- VPN creates latency (150ms) slowing work down
-- Aegis is fast (15ms) because it doesn't tunnel everything
+- VPN creates latency (150ms+) slowing work down
+- Aegis is fast (< 20ms) because decisions are instant, not tunneling traffic
 
 **"Why security teams love this:"**
 - No more wondering "did that access seem suspicious?"
@@ -231,10 +294,19 @@ Priority order (what NOT to skip):
 - Panic button means employees can help protect themselves
 
 **"Why CFOs approve this:"**
-- $1.2M annual ROI on 500-person org
+- $1.2M annual ROI on 500-person bank
 - Reduces incident response costs dramatically
-- Compliance automation saves tons of manual review work
-- Productivity gains from 10x faster network access
+- Compliance automation saves manual review work
+- Productivity gains from 10x faster access decisions
+
+**"The Business Model:"**
+- Target: 500-1000 employee enterprises (banks, healthcare, finance)
+- Price: $18/user/month (Professional tier - most popular)
+- Revenue: $108K-$216K per customer annually
+- Year 1 Goal: $2M ARR (10-20 customers)
+
+**Transition to Live Demo:**
+- "Let me show you how this actually works. I'll log in as an employee first, then switch to the admin view."
 
 ---
 

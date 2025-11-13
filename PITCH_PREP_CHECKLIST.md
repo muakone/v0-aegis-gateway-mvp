@@ -146,7 +146,7 @@
 - [x] You show three pillars simply
 - [x] You tie it to their pain (remote work is real, security is hard)
 
-### Traction (Is this real?)
+### Traction (Is this rea   l?)
 - [x] Working product demo (not PowerPoint)
 - [x] Pilot customers mentioned (3 regional banks)
 - [x] Live attack simulation (proves it works)
